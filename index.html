@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map</title>
+    <!-- Incluir Leaflet CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 800px;
+            width: 100%;
+        }
+
+        @keyframes fadein{
+            from {opacity: 0;}
+            to {opacity: 1}
+        }
+        .leaflet-circleMarker-icon {
+            -webkit-animation: fadein 2s ease-in alternate infinite;
+            -moz-animation: fadein 2s ease-in alternate infinite;
+            animation: fadein 2s ease-in alternate infinite;
+        }
+ 
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Inicializar el mapa
+        var map = L.map('map', {
+            center: [2.43823, 76.61316],
+            zoom: 13
+        });
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Coordenadas
+        var latlngs = [
+            [2.431056159178395, -76.60428344267588], //CALLE 17 B/ SANTA MONICA
+            [2.4574954072453767, -76.64341213194183], //CALLE 5 # 52-65 B / LOMAS DE GRANADA
+            [2.4505852417714267, -76.62813745030164], //CALLE 5 CARRERA 33
+            [2.4530959597524116, -76.63272883966333], //CALLE 5 CARRERA 38A 
+            [2.4441309919463006, -76.61346803971851], //CALLE 5 CON 15          //1
+            [2.4479586477401942, -76.62162825892041], //CALLE 5 CON 25
+            [2.4441309919463006, -76.61346803971851], //CALLE 5 CON CARRERA  15 //2
+            [2.489446888290217, -76.58179529261552], // CARRERA 17 CALLE 56N -04 B/ GRAN BRETAÑA
+            [2.4429152774349507, -76.61521563891742], //CARRERA 17 CALLE 7
+            [2.452162145622968, -76.59751877913476], //CARRERA 18 NORTE  CON CALLE 6 LA ESTANCIA
+            [2.4519931645764337, -76.58482265941059], // CARRERA 1E # 26N-305
+            [2.4410887506758674, -76.60220957916846], // CARRERA 2 CON CALLE 4
+            [2.441183964461526, -76.62129835824508], //CARRERA 21  CALLE 11 BARRIO RETIRO BAJO
+            [2.435583203501701, -76.60517465392141], // CARRERA 3 CON CALLE 10A CENTRO
+            [2.456901996582941, -76.63370493643708], //CARRERA 42 CON CALLE 2B
+            [2.459281465646252, -76.58633121038278], //CARRERA 6 # 28-24 B GALICIA 
+            [2.438760293960854, -76.60694738441934], //CARRERA 6 CON CALLE 8 
+            [2.44275910109451, -76.60745184906322], //CARRERA 8 CALLE 4 CENTRO
+            [2.4664308202558973, -76.58710612783175], //CARRERA 9 CALLE 36N (excel) =>   //CARRERA 9 CALLE 35N (gm)    
+            [2.481286169526027, -76.56914398863834], //CARRERA 9 CALLE 66N     
+            [2.4797150074611527, -76.57551806793236],// CARRERA 9 CON 57 NORTE
+            [2.453280598487957, -76.6017830817371], // CARRERA 9 CON CALLE 13 NORTE STA CLARA
+            [2.4664308202558973, -76.58710612783175], //CARRERA 9 CON CALLE 35 NORTE   //2
+            [2.442135053407933, -76.60865931349441], //CARRERA 9 CON CALLE 5 CENTRO
+            [2.452399258754861, -76.60388379394217], //TRANSVERSAL 9 NORTE CON CARRERA 9
+        ];
+        var coordenadasVistas = [];
+        var markers = [];
+        
+        // Crear los marcadores
+        for (var i = 0; i < latlngs.length; i++) {
+            var latlng = latlngs[i];
+            var marker;
+            
+            if (coordenadasVistas.some(coord => coord[0] === latlng[0] && coord[1] === latlng[1])) {
+                // Si las coordenadas se repiten, cambia al icono de circulo
+                marker = L.circleMarker(latlng, {
+                    className: "leaflet-circleMarker-icon"
+                }).addTo(map);
+            } else {
+                // Si las coordenadas son únicas, usa el puntero azul
+                marker = L.marker(latlng).addTo(map);
+            }
+            
+            markers.push(marker);
+            coordenadasVistas.push(latlng);
+        }
+
+        // Crea una línea que conecte los puntos
+    
+        map.fitBounds(L.latLngBounds(latlngs));
+        
+    </script>
+</body>
+</html>
