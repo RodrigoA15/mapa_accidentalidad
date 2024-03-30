@@ -94,20 +94,10 @@
             if (coordenadasVistas.some(coord => coord[0] === latlng[0] && coord[1] === latlng[1])) {
                 // Si las coordenadas se repiten, cambia al icono de circulo
                // Crear el marcador
-var marker = L.circleMarker(latlng, {
-    className: "leaflet-circleMarker-icon"
-}).addTo(map);
-
-// Agregar el evento mouseover para abrir el popup
-marker.on('mouseover', function (e) {
-    this.bindPopup('Foto deteccion').openPopup();
-});
-
-// Agregar el evento mouseout para cerrar el popup
-marker.on('mouseout', function (e) {
-    this.closePopup();
-});
-
+                L.circleMarker(latlng, {
+                    className: "leaflet-circleMarker-icon"
+                }).addTo(map).bindPopup("Positivo para cámara")
+                    .openPopup();
             } else {
                 // Si las coordenadas son únicas, usa el puntero azul
                 marker = L.marker(latlng).addTo(map);
