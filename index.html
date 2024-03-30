@@ -65,6 +65,23 @@
             [2.4664308202558973, -76.58710612783175], //CARRERA 9 CON CALLE 35 NORTE   //2
             [2.442135053407933, -76.60865931349441], //CARRERA 9 CON CALLE 5 CENTRO
             [2.452399258754861, -76.60388379394217], //TRANSVERSAL 9 NORTE CON CARRERA 9
+            //Friday
+            [2.4552854359899086, -76.64056464954993], //CALLE 5 CON CARRERA 52
+            [2.450088375958807, -76.62547708247584], //CALLE 5 FRENTE NOMENCLATURA 30-22
+            [2.476038636518041, -76.55880344533648], //CALLE 71CN  # 4E-04
+            [2.461845716517259, -76.58321778401819], //CARRERA 6 FRENTE NOMENCLATURA 13N-55
+            [2.4547646677329733, -76.59899848427132],//CARRERA 9  17N-12
+            [2.4812476266920345, -76.56808770410048], //CARRERA 9  FRENTE NOMENCLATURA 67N-132
+            [2.4816711896491888, -76.5649200220991],//CARRERA 9 # 69N-14
+            [2.4585950438347903, -76.59381219665971],//CARRERA 9 # 6N-27
+            [2.4805586168476306, -76.57484219146761], //CARRERA 9 60N-199
+            [2.4614668968857547, -76.59130422060493],// CARRERA 9 CON 38 NORTE
+            [2.4917663683635825, -76.55913356507985],//CARRERA 9 CON CALLE 82 NORTE
+            [2.481268794553435, -76.56976688445717],//CARRERA 9N FRENTE NOMENCLATURA # 65N-40
+            [2.4374023737401695, -76.61633658728482],//CRA 17 ANILLO VIAL SUR
+            [2.4283703533198238, -76.62123847284765],//DIAGONAL A LA NOMENCLATURA 28 TRANSVERSAL 1-147 B/ TUNEL BAJO
+            [2.427806242823661, -76.62139995626548],//TRANSVERSAL 17 CON 18 FRENTE ESTACION DE SERVICIO LOS FAROLES     
+            [2.4501106170991354, -76.63707245037287]//VEREDA DE TORRES
         ];
         var coordenadasVistas = [];
         var markers = [];
@@ -76,9 +93,21 @@
             
             if (coordenadasVistas.some(coord => coord[0] === latlng[0] && coord[1] === latlng[1])) {
                 // Si las coordenadas se repiten, cambia al icono de circulo
-                marker = L.circleMarker(latlng, {
-                    className: "leaflet-circleMarker-icon"
-                }).addTo(map);
+               // Crear el marcador
+var marker = L.circleMarker(latlng, {
+    className: "leaflet-circleMarker-icon"
+}).addTo(map);
+
+// Agregar el evento mouseover para abrir el popup
+marker.on('mouseover', function (e) {
+    this.bindPopup('Foto deteccion').openPopup();
+});
+
+// Agregar el evento mouseout para cerrar el popup
+marker.on('mouseout', function (e) {
+    this.closePopup();
+});
+
             } else {
                 // Si las coordenadas son únicas, usa el puntero azul
                 marker = L.marker(latlng).addTo(map);
