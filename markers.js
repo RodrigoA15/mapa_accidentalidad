@@ -15,7 +15,7 @@ export const marker = () => {
   //variante sur kilometro 1 +720
   L.circleMarker([2.4381980672540378, -76.6277924907696], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -28,7 +28,7 @@ export const marker = () => {
   //KILOMETRO 0 +600 VARIANTE SUR
   L.circleMarker([2.4329398237362403, -76.62081734765023], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -41,7 +41,7 @@ export const marker = () => {
   //KILOMETRO 4+200 CON CRA 48A
   L.circleMarker([2.4591700837365242, -76.63946252034175], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -54,7 +54,7 @@ export const marker = () => {
   //KILOMETRO 8 + 700 VARIANTE POPAYAN PARCELACION SAN FRANCISCO
   L.circleMarker([2.479978783190739, -76.60748936690592], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -67,7 +67,7 @@ export const marker = () => {
   //CARRERA 9N FRENTE NOMENCLATURA # 65N-40
   L.circleMarker([2.481268794553435, -76.56976688445717], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -80,7 +80,7 @@ export const marker = () => {
   //KILOMETRO 0
   L.circleMarker([2.4286767983171846, -76.6211551843291], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -93,7 +93,7 @@ export const marker = () => {
   //CALLE 5 CON 15
   L.circleMarker([2.4441309919463006, -76.61346803971851], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -106,7 +106,7 @@ export const marker = () => {
   //CARRERA 9 CON CALLE 35 NORTE
   L.circleMarker([2.4664308202558973, -76.58710612783175], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
@@ -118,7 +118,7 @@ export const marker = () => {
 
   L.circleMarker([2.494852192703368, -76.562247819502691], {
     className: "leaflet-circleMarker-icon",
-    radius: 60,
+    radius: 24,
     color: "red",
     fillColor: "#f03",
   })
