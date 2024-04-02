@@ -7,9 +7,10 @@
     <!-- Incluir Leaflet CSS y JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="./circles.js" type="module"></script>
     <style>
         #map {
-            height: 100vh;
+            height: 99vh;
             width: 100%;
         }
 
@@ -22,22 +23,16 @@
             -moz-animation: fadein 2s ease-in alternate infinite;
             animation: fadein 2s ease-in alternate infinite;
         }
- 
     </style>
 </head>
 <body>
     <div id="map">
     <script>
-        // Inicializar el mapa
         var map = L.map('map', {
             center: [2.44497084266567, -76.61667097602667],
             zoom: 13
         });
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         // Coordenadas
         var latlngs = [
             [2.431056159178395, -76.60428344267588], //CALLE 17 B/ SANTA MONICA
@@ -71,8 +66,8 @@
             [2.476038636518041, -76.55880344533648], //CALLE 71CN  # 4E-04
             [2.461845716517259, -76.58321778401819], //CARRERA 6 FRENTE NOMENCLATURA 13N-55
             [2.4547646677329733, -76.59899848427132],//CARRERA 9  17N-12
-            [2.4812476266920345, -76.56808770410048], //CARRERA 9  FRENTE NOMENCLATURA 67N-132
-            [2.4816711896491888, -76.5649200220991],//CARRERA 9 # 69N-14
+            [2.481226228392005, -76.56953234470006], //CARRERA 9  FRENTE NOMENCLATURA 67N-132 //Este
+            [2.481220869003415, -76.56902272502967],//CARRERA 9 # 69N-14
             [2.4585950438347903, -76.59381219665971],//CARRERA 9 # 6N-27
             [2.4805586168476306, -76.57484219146761], //CARRERA 9 60N-199
             [2.4614668968857547, -76.59130422060493],// CARRERA 9 CON 38 NORTE
@@ -115,75 +110,38 @@
             [2.4381980672540378, -76.6277924907696], //variante sur kilometro 1 +720 
             [2.4663767195834057, -76.62978181021406], //VARIANTE SUR POPAYAN KILOMETRO 5
         ];
-        var coordenadasVistas = [];
-        var markers = [];
+
+        let dataHeridos = [
+            [2.4700, -76.6200]
+        ]
         const url1 ="https://www.google.com/maps/@2.4664673,-76.5870022,3a,75y,23.84h,68.8t/data=!3m7!1e1!3m5!1st0jdjtgD6zscoHjvjd3nvA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3Dt0jdjtgD6zscoHjvjd3nvA%26cb_client%3Dmaps_sv.share%26w%3D900%26h%3D600%26yaw%3D23.836932552015625%26pitch%3D21.196323625312218%26thumbfov%3D90!7i13312!8i6656?authuser=0&coh=205410&entry=ttu";
         const url2 = "https://www.google.com/maps/@2.4441862,-76.6134566,3a,75y,309.13h,55.86t/data=!3m7!1e1!3m5!1sW5JnwPGdjeHHdJWXBG2o5g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DW5JnwPGdjeHHdJWXBG2o5g%26cb_client%3Dmaps_sv.share%26w%3D900%26h%3D600%26yaw%3D309.13433814521903%26pitch%3D34.14123733722256%26thumbfov%3D90!7i13312!8i6656?authuser=0&coh=205410&entry=ttu"
         const norte = `<a href=${url1}>Norte</a>` 
-        const centro = `<a href=${url2}>Centro</a>` 
-
-        L.circleMarker([2.4381980672540378, -76.6277924907696], {
-                className: "leaflet-circleMarker-icon",
-                radius: 60,
-                color: 'red',
-                fillColor: '#f03',
-            }).addTo(map).bindPopup(`Positivo para cámara  ${centro}  ${norte}`)
-                .openPopup();
-
-                L.circleMarker([2.4329398237362403, -76.62081734765023], {
-                className: "leaflet-circleMarker-icon",
-                radius: 60,
-                color: 'red',
-                fillColor: '#f03',
-            }).addTo(map).bindPopup(`Positivo para cámara  ${centro}  ${norte}`)
-                .openPopup();
-
-                
-                L.circleMarker([2.4591700837365242, -76.63946252034175], {
-                className: "leaflet-circleMarker-icon",
-                radius: 60,
-                color: 'red',
-                fillColor: '#f03',
-            }).addTo(map).bindPopup(`Positivo para cámara  ${centro}  ${norte}`)
-                .openPopup();
-
-                L.circleMarker([2.479978783190739, -76.60748936690592], {
-                className: "leaflet-circleMarker-icon",
-                radius: 60,
-                color: 'red',
-                fillColor: '#f03',
-            }).addTo(map).bindPopup(`Positivo para cámara  ${centro}  ${norte}`)
-                .openPopup();
+        const centro = `<a href=${url2}>Centro</a>`     
         // Crear los marcadores
+        for(let i = 0; i <dataHeridos.length; i++){
+            let latlng = dataHeridos[i];
+            let myIcon = L.icon({
+                iconUrl: "./alfiler-de-mapa.png",
+                iconSize: [30, 30]
+            })
+            let marker = L.marker(latlng, {icon : myIcon}).addTo(map);
+        }
         for (var i = 0; i < latlngs.length; i++) {
             var latlng = latlngs[i];
-            var marker;
-            
-            if (coordenadasVistas.some(coord => coord[0] === latlng[0] && coord[1] === latlng[1])) {
-                // Si las coordenadas se repiten, cambia al icono de circulo
-               // Crear el marcador
-                L.circleMarker(latlng, {
-                className: "leaflet-circleMarker-icon",
-                radius: 60,
-                color: 'red',
-                fillColor: '#f03',
-            }).addTo(map).bindPopup(`Positivo para cámara  ${centro}  ${norte}`)
-                .openPopup();
-
-            } else {
-                // Si las coordenadas son únicas, usa el puntero azul
-                marker = L.marker(latlng).addTo(map);
-            }
-            
-            markers.push(marker);
-            coordenadasVistas.push(latlng);
+            var marker
+                var myIcon = L.icon({
+                    iconUrl: "./pin-de-ubicacion.png",
+                    iconSize: [20, 20]
+                })
+                marker = L.marker(latlng, {icon: myIcon}).addTo(map);
         }
-
-        // Crea una línea que conecte los puntos
-    
-        map.fitBounds(L.latLngBounds(latlngs));
-        
+        map.fitBounds(L.latLngBounds([latlngs, dataHeridos]));
     </script>
+        <script type="module">
+            import { Puntos } from "./circles.js";
+            Puntos();
+        </script>
     </div>
 </body>
 </html>
