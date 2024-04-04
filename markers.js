@@ -127,4 +127,16 @@ export const marker = () => {
         "https://www.google.com/maps/@2.4946172,-76.5616253,3a,75y,268.82h,75.93t/data=!3m7!1e1!3m5!1sVNNr8uhbAq1XUWYyI-sNLg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DVNNr8uhbAq1XUWYyI-sNLg%26cb_client%3Dmaps_sv.share%26w%3D900%26h%3D600%26yaw%3D268.81856317018594%26pitch%3D14.067650195701844%26thumbfov%3D90!7i13312!8i6656?authuser=0&coh=205410&entry=ttu";
     })
     .addTo(map);
+
+  L.circleMarker([2.481708, -76.5877674], {
+    className: "leaflet-circleMarker-icon",
+    radius: 25,
+    color: "red",
+    fillColor: "#f03",
+  })
+    .on("click", () => {
+      window.location.href =
+        "https://www.google.com/maps/@2.481708,-76.5877674,3a,75y,15.87h,73.62t/data=!3m7!1e1!3m5!1s0zrrBKEUK-FBxOvx7y94_w!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D0zrrBKEUK-FBxOvx7y94_w%26cb_client%3Dmaps_sv.share%26w%3D900%26h%3D600%26yaw%3D15.868569218213002%26pitch%3D16.377533038266776%26thumbfov%3D90!7i13312!8i6656?authuser=0&coh=205410&entry=ttu";
+    })
+    .addTo(map);
 };
