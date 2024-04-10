@@ -53,9 +53,8 @@
   
   .notibody {
     color: #99999d;
-    padding: 0 1.25rem;
     transition: transform 300ms ease;
-    z-index: 5;
+    z-index: 6;
   }
   
   .notification:hover .notibody {
@@ -117,3 +116,27 @@
 .notibody {
     font-size: 16px;
 }
+
+table {
+  position: relative;
+  top: 40px; /* Ajusta la posición vertical según sea necesario */
+  left: 70px; /* Ajusta la posición horizontal según sea necesario */
+  z-index: 1000; /* Asegura que la notificación esté por encima del mapa */
+  background-color: rgba(255, 255, 255, 0.8); /* Color de fondo semi-transparente */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+} 
+
+td{
+  font-size: 12px;
+}
+
+td, th::after {
+  border-top: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  font-size: 10px;
+}
+
+

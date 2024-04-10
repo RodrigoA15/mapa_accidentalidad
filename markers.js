@@ -25,8 +25,10 @@ export const marker = () => {
       var latlng = dataMuertos[i];
       L.marker(latlng, {
         icon: L.icon({
-          iconUrl: "./ubicacion (1).png",
-          iconSize: [38, 42],
+          iconUrl: "./location.png",
+          iconSize: [30, 42],
+          shadowUrl: "./location.png",
+          shadowSize: [30, 42],
         }),
       }).addTo(map);
     }
