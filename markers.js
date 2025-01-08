@@ -1,5 +1,5 @@
-import { dataMuertos } from "./dataDeads.js";
-import { dataHeridos } from "./dataHeridos.js";
+import { dataMuertos } from "./dataDeads2024.js";
+import { dataHeridos } from "./dataHeridos2024.js";
 export const marker = () => {
   var map = L.map("map", {
     center: [2.44497084266567, -76.61667097602667],
