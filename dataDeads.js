@@ -78,5 +78,4 @@ export const dataMuertos = [
   [2.4920350017781883, -76.58150376289974], //Variante Norte kilometro 12 + 500
   [2.4663564417055412, -76.58714626782552], //Carrera 9 con 35N
   [2.440346805325931, -76.61111355393321], //CARRERA 9 CALLE 8
-
 ];
