@@ -163,15 +163,27 @@ export const marker = () => {
       })
       .addTo(map);
 
-      L.circleMarker([2.451447151954864, -76.59912092927961], {
+    L.circleMarker([2.451447151954864, -76.59912092927961], {
+      className: "leaflet-circleMarker-icon",
+      radius: 25,
+      color: "red",
+      fillColor: "#f03",
+    })
+      .on("click", () => {
+        window.location.href =
+          "https://www.google.com/maps/@2.4515311,-76.5991868,3a,75y,79.73h,90.11t/data=!3m7!1e1!3m5!1s9TKxfOHmVup5Ky8X__adZA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-0.11468682996510893%26panoid%3D9TKxfOHmVup5Ky8X__adZA%26yaw%3D79.7314073679068!7i13312!8i6656?authuser=0&entry=ttu&g_ep=EgoyMDI1MDEwNi4xIKXMDSoASAFQAw%3D%3D";
+      })
+      .addTo(map);
+
+      L.circleMarker([2.4515478226234566, -76.60541913270515], {
         className: "leaflet-circleMarker-icon",
-        radius: 25,
+        radius: 24,
         color: "red",
         fillColor: "#f03",
       })
         .on("click", () => {
           window.location.href =
-            "https://www.google.com/maps/@2.4515311,-76.5991868,3a,75y,79.73h,90.11t/data=!3m7!1e1!3m5!1s9TKxfOHmVup5Ky8X__adZA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-0.11468682996510893%26panoid%3D9TKxfOHmVup5Ky8X__adZA%26yaw%3D79.7314073679068!7i13312!8i6656?authuser=0&entry=ttu&g_ep=EgoyMDI1MDEwNi4xIKXMDSoASAFQAw%3D%3D";
+            "https://www.google.com/maps/@2.4515063,-76.6055251,3a,75y,45.94h,91.07t/data=!3m7!1e1!3m5!1shG_Rm0kAW7IcBciAgeTzEw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1.0704221462605545%26panoid%3DhG_Rm0kAW7IcBciAgeTzEw%26yaw%3D45.94164538484794!7i13312!8i6656?authuser=0&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D";
         })
         .addTo(map);
   }
